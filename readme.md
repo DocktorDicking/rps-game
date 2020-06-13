@@ -8,6 +8,8 @@ to avoid merge conflicts.
 * Git pull: Pulls changes from the server
 * Git commit: Commits changes to local repository
 * Git push: Uploads changes to git server
+<br/><br/>
 
-<br/>
+Don't forget to hard reload the page when you made changed to the javascript.
+The browser will save the old JS file in it's Cache. On windows (in chrome) do: ctrl + f5 to do a hard refresh. 
 
