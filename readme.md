@@ -13,3 +13,8 @@ to avoid merge conflicts.
 Don't forget to hard reload the page when you made changed to the javascript.
 The browser will save the old JS file in it's Cache. On windows (in chrome) do: ctrl + f5 to do a hard refresh. 
 
+TO DO, TO DO... TO DO, TO DO, TO DO, TO DOOOO:
+
+- High-light player choice
+- Only show start button when choice is made (undefined)
+

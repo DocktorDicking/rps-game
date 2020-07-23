@@ -17,9 +17,11 @@ var battleButton = document.getElementById("battle");
 var restartButton = document.getElementById("restart");
 
 restartButton.hidden = true;
+function setValue(player1Choice){
+    player1 = player1Choice;
+}
 
 function play() {
-    player1 = Math.floor(Math.random() * 3);
     player2 = Math.floor(Math.random() * 3);
 
     /**
@@ -36,35 +38,35 @@ function play() {
     if (names[player1] === 'rock') {
         if (names[player2] === 'scissor'){
             winnerWinnerChickenDinner['player1']++;
-            result = 'player 1 wins';
+            result = 'player 1 wins the round';
         }
         if (names[player2] === 'paper') {
             winnerWinnerChickenDinner['player2']++;
-            result = 'player 2 wins';
+            result = 'player 2 wins the round';
         }
     }
     if (names[player1] === 'paper') {
         if (names[player2] === 'scissor'){
             winnerWinnerChickenDinner['player2']++;
-            result = 'player 2 wins';
+            result = 'player 2 wins the round';
         }
         if (names[player2] === 'rock') {
             winnerWinnerChickenDinner['player1']++;
-            result = 'player 1 wins';
+            result = 'player 1 wins the round';
         }
     }
     if (names[player1] === 'scissor') {
         if (names[player2] === 'rock'){
             winnerWinnerChickenDinner['player2']++;
-            result = 'player 2 wins';
+            result = 'player 2 wins the round';
         }
         if (names[player2] === 'paper') {
             winnerWinnerChickenDinner['player1']++;
-            result = 'player 1 wins';
+            result = 'player 1 wins the round';
         }
     }
 
-    var playerOutput = "Round " + (currentRound + 1) + "/" + rounds + "<br/>Player1: " + names[player1] + "<br/> Player2: " + names[player2] +
+    var playerOutput = "Round " + (currentRound + 1) + "/" + rounds + "<br/>Player1: " + names[player1] + "<br/> George: " + names[player2] +
         "<br/>Result: " + result + "<br/><br/>";
     var roundResults =
         "Results: <br/>" +
@@ -76,11 +78,16 @@ function play() {
     //Document.write writes stuff to html. You can look at Document being the HTML document.
     document.getElementById('results').innerHTML = output;
     currentRound++;
-
+    
+    
     if (currentRound === rounds) {
-        battleButton.hidden = true;
-        restartButton.hidden = false;
-        matchResults();
+        if  (winnerWinnerChickenDinner['player1'] === winnerWinnerChickenDinner['player2']){
+            rounds = rounds + 1;
+        } else {
+            battleButton.hidden = true;
+            restartButton.hidden = false;
+            matchResults();
+        }
     }
 }
 
@@ -92,12 +99,7 @@ function matchResults() {
     if  (winnerWinnerChickenDinner['player1'] < winnerWinnerChickenDinner['player2']){
         matchResult = "PLAYER 2 IS VICTORIOUS!!";
     }
-    if  (winnerWinnerChickenDinner['player1'] === winnerWinnerChickenDinner['player2']){
-        matchResult = "IT'S A DRAAAAWWWWW!!";
-    }
-    if  (winnerWinnerChickenDinner['player1'] + winnerWinnerChickenDinner['player2'] === 0){
-        matchResult = "IT'S A DRAAAAWWWWW!!";
-    }
+
 
     document.getElementById('matchResult').innerHTML = matchResult;
 }
