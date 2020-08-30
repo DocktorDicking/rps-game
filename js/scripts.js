@@ -15,10 +15,37 @@ var names =  ['rock','paper','scissor'];
 var winnerWinnerChickenDinner = {'draw': 0,'player1': 0,'player2': 0};
 var battleButton = document.getElementById("battle");
 var restartButton = document.getElementById("restart");
+var resultParagraph = document.getElementById("results");
+var rock1Button = document.getElementById("rock1");
+var paper1Button = document.getElementById("paper1");
+var scissor1Button = document.getElementById("scissor1");
+
+battleButton.hidden = true;
+resultParagraph.hidden = true;
 
 restartButton.hidden = true;
 function setValue(player1Choice){
     player1 = player1Choice;
+    battleButton.hidden = false;
+    resultParagraph.hidden = false;
+    if (player1Choice == 0){
+        rock1Button.style.background = "Red";
+    }
+    else {
+        rock1Button.style.background = '#EFEFEF';
+    }
+    if (player1Choice == 1){
+        paper1Button.style.background = "Red";
+    }
+    else {
+        paper1Button.style.background = '#EFEFEF';
+    }
+    if (player1Choice == 2){
+        scissor1Button.style.background = "Red";
+    }
+    else {
+        scissor1Button.style.background = '#EFEFEF';
+    }
 }
 
 function play() {
@@ -79,6 +106,7 @@ function play() {
     document.getElementById('results').innerHTML = output;
     currentRound++;
     
+    battleButton.hidden = true;
     
     if (currentRound === rounds) {
         if  (winnerWinnerChickenDinner['player1'] === winnerWinnerChickenDinner['player2']){
